@@ -1,0 +1,22 @@
+﻿@using Microsoft.AspNet.Identity
+@using System.Security.Claims
+@if (Request.IsAuthenticated)
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+            <a href="/Profile/Edit" title="Manage">Hello @((User.Identity as ClaimsIdentity).FindFirst("username").Value)</a>
+        </li>
+        <li>
+            @*<a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>*@
+            <a href="/Account/Logout">Logout</a>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

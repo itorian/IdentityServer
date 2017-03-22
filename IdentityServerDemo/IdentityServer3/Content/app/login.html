@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html ng-app="app" ng-controller="LayoutCtrl">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{siteName}</title>
+</head>
+<body lang="en">
+    <!--<div class='container page-login' ng-cloak>
+        <div class="row" ng-show="model.errorMessage">
+            <div class="col-md-12 col-sm-12">
+                <div class="alert alert-danger">
+                    <strong>Error:</strong>
+                    {{model.errorMessage}}
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <link rel='stylesheet prefetch' href='/content/custom/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="/content/custom/css/style.css">
+    <div class="pen-title">
+        <h1>
+            <img src="/content/custom/img/knorish-logo.png" />
+        </h1>
+    </div>
+    <div class="module form-module">
+        <div class="toggle">
+            <img src="/content/custom/img/social-login-text.jpg" class="socialicon" alt="Social Media Login" /> Social Media Login
+        </div>
+        <div class="form">
+            <h2>Login</h2>
+            <form name="form" method="post" action="{{model.loginUrl}}">
+                <anti-forgery-token token="model.antiForgery"></anti-forgery-token>
+                <input required name="username" autofocus id="username" type="text" class="form-control" placeholder="Email" ng-model="model.username" maxlength="100">
+                <input required id="password" name="password" type="password" class="form-control" placeholder="Password" ng-model="model.password" maxlength="100" autocomplete="off">
+                <!--<label><input type="checkbox" id="rememberMe" name="rememberMe" ng-model="model.rememberMe" value="true" style="width:auto;"> Remeber my login</label>-->
+                <button class="btn btn-primary" ng-disabled="form.$invalid">Login</button>
+                <p style="color:red;margin-bottom: -16px;">
+                    {{model.errorMessage}}
+                </p>
+            </form>
+        </div>
+        <div class="form" style="display:none">
+            <h2>Social Login</h2>
+            <p ng-repeat="provider in model.externalProviders">
+                <a class="btn btn-default socialLoginButton {{provider.type}}" href="{{provider.href}}">{{provider.text}}</a>
+            </p>
+        </div>
+        <div class="cta">
+            <a href="https://knorishv2mvcclient.azurewebsites.net/Account/ForgotPassword/">Forgot password</a> |
+            <a href="https://knorishv2mvcclient.azurewebsites.net/Account/Register/">Register yourself</a>
+            <ul class="list-unstyled">
+                <li ng-repeat="link in model.additionalLinks"><a ng-href="{{link.href}}">{{link.text}}</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <script id='modelJson' type='application/json'>
+        {model}
+    </script>
+
+    <script src='/content/custom/js/jquery.min.js'></script>
+    <script src='/content/custom/js/func.js'></script>
+    <script src="/content/custom/js/index.js"></script>
+    <script src="/content/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/content/libs/angular/angular.1.2.13.min.js"></script>
+    <script src="/content/libs/encoder/encoder.min.js"></script>
+    <script src="/content/app/app.js"></script>
+</body>
+</html>
+
