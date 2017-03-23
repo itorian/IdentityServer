@@ -1,4 +1,4 @@
-﻿using IdentityServer3Demo.AspNetIdentity;
+﻿using IdentityServer3.AspNetIdentity;
 using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Services;
 

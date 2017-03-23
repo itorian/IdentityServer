@@ -23,17 +23,28 @@ namespace IdentityServer3Demo.IdentityServer
                         new ScopeClaim("role", true)
                     }
                 },
-                new Scope
-                {
-                    Name = "apiname1",
-                    DisplayName = "API Scope",
-                    Type = ScopeType.Resource,
-                    Enabled = true,
-                    Claims = new List<ScopeClaim>
-                    {
-                        new ScopeClaim("role", true)
-                    }
-                }
+                //new Scope
+                //{
+                //    Name = "apiname1",
+                //    DisplayName = "API Scope1",
+                //    Type = ScopeType.Resource,
+                //    Enabled = true,
+                //    Claims = new List<ScopeClaim>
+                //    {
+                //        new ScopeClaim("role", true)
+                //    }
+                //},
+                //new Scope
+                //{
+                //    Name = "apiname2",
+                //    DisplayName = "API Scope2",
+                //    Type = ScopeType.Resource,
+                //    Enabled = true,
+                //    Claims = new List<ScopeClaim>
+                //    {
+                //        new ScopeClaim("role", true)
+                //    }
+                //}
             };
 
             return scopes;

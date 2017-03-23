@@ -11,11 +11,15 @@ namespace IdentityServer3Demo.IdentityServer
         {
             var factory = new IdentityServerServiceFactory();
 
-            var scopeStore = new InMemoryScopeStore(Scopes.Get());
-            factory.ScopeStore = new Registration<IScopeStore>(scopeStore);
-            var clientStore = new InMemoryClientStore(Clients.Get());
-            factory.ClientStore = new Registration<IClientStore>(clientStore);
+            // select scopes
+            var scopes = new InMemoryScopeStore(Scopes.Get());
+            factory.ScopeStore = new Registration<IScopeStore>(scopes);
 
+            // select clients
+            var clients = new InMemoryClientStore(Clients.Get());
+            factory.ClientStore = new Registration<IClientStore>(clients);
+
+            // configure cors policy
             factory.CorsPolicyService = new Registration<ICorsPolicyService>(new DefaultCorsPolicyService { AllowAll = true });
 
             return factory;

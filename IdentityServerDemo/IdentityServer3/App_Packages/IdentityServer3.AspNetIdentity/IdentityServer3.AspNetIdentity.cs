@@ -26,7 +26,7 @@ using IdentityServer3.Core;
 using IdentityModel;
 using IdentityServer3.Core.Services.Default;
 
-namespace IdentityServer3Demo.AspNetIdentity
+namespace IdentityServer3.AspNetIdentity
 {
     public class AspNetIdentityUserService<TUser, TKey> : UserServiceBase
         where TUser : class, Microsoft.AspNet.Identity.IUser<TKey>, new()

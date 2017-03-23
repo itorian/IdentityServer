@@ -1,5 +1,6 @@
 ﻿using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Logging;
+using IdentityServer3.Core.Models;
 using IdentityServer3Demo.IdentityServer;
 using Owin;
 using Serilog;
@@ -10,6 +11,24 @@ namespace IdentityServer3Demo
 {
     public class Startup
     {
+        //public void Configuration(IAppBuilder app)
+        //{
+        //    app.Map("/identity", idsrvApp =>
+        //    {
+        //        idsrvApp.UseIdentityServer(new IdentityServerOptions
+        //        {
+        //            SiteName = "Embedded IdentityServer",
+        //            SigningCertificate = LoadCertificate(),
+
+        //            // In memory configuration
+        //            Factory = new IdentityServerServiceFactory()
+        //                        .UseInMemoryUsers(Users.Get())
+        //                        .UseInMemoryClients(Clients.Get())
+        //                        .UseInMemoryScopes(StandardScopes.All)
+        //        });
+        //    });
+        //}
+
         public void Configuration(IAppBuilder app)
         {
             //Install-Package Serilog
@@ -19,7 +38,7 @@ namespace IdentityServer3Demo
 
             app.Map("/identity", core =>
             {
-                // ASP.NET Identity Database
+                //// Configure clients, scopes and users services - asp.net identity database
                 var idSvrFactory = Factory.Configure();
                 idSvrFactory.ConfigureUserService("DefaultConnection");
 
@@ -38,7 +57,7 @@ namespace IdentityServer3Demo
                     Factory = idSvrFactory,
                     AuthenticationOptions = new AuthenticationOptions
                     {
-                        IdentityProviders = ConfigureIdentityProviders,
+                        IdentityProviders = ConfigureOAuthIdentityProviders,
                         EnablePostSignOutAutoRedirect = true,
                         EnableSignOutPrompt = false
                     }
@@ -48,15 +67,15 @@ namespace IdentityServer3Demo
             });
         }
 
-        private void ConfigureIdentityProviders(IAppBuilder app, string signInAsType)
+        private void ConfigureOAuthIdentityProviders(IAppBuilder app, string signInAsType)
         {
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
             //    AuthenticationType = "Google",
             //    Caption = "Sign-in with Google",
             //    SignInAsAuthenticationType = signInAsType,
-            //    ClientId = "322890526852-jqbj4ldbebmrdiqt144h55ekook1vap2.apps.googleusercontent.com",
-            //    ClientSecret = "sQldgdaOLh-qob0obVclF-BK",
+            //    ClientId = "*****",
+            //    ClientSecret = "****",
             //    Provider = new GoogleOAuth2AuthenticationProvider()
             //    {
             //        OnAuthenticated = (context) =>
@@ -71,8 +90,8 @@ namespace IdentityServer3Demo
             //    AuthenticationType = "Facebook",
             //    Caption = "Sign-in with Facebook",
             //    SignInAsAuthenticationType = signInAsType,
-            //    AppId = "875148929265560",
-            //    AppSecret = "639518a75de0a74911568f756854b984",
+            //    AppId = "****",
+            //    AppSecret = "*****",
             //    Provider = new FacebookAuthenticationProvider()
             //    {
             //        OnAuthenticated = (context) =>
@@ -87,8 +106,8 @@ namespace IdentityServer3Demo
             //    AuthenticationType = "Twitter",
             //    Caption = "Sign-in with Twitter",
             //    SignInAsAuthenticationType = signInAsType,
-            //    ConsumerKey = "46yidNCE2d6rxlkd6JN0zEIsO",
-            //    ConsumerSecret = "Lh79xlWFKa3o1mOKZaba73vr2kAtwyZEJtOahm57u5TU18fpxV",
+            //    ConsumerKey = "****",
+            //    ConsumerSecret = "******",
             //    Provider = new TwitterAuthenticationProvider()
             //    {
             //        OnAuthenticated = (context) =>

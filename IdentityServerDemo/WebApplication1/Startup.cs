@@ -49,8 +49,8 @@ namespace WebApplication1
                 RedirectUri = "http://localhost:19007/", //client url
                 PostLogoutRedirectUri = "http://localhost:19007/", //client url
                 SignInAsAuthenticationType = "Cookies",
-                ResponseType = "id_token code token",
-                Scope = "openid profile email roles apiname1",
+                ResponseType = "code id_token token",
+                Scope = "openid profile email roles",
                 Notifications = new OpenIdConnectAuthenticationNotifications()
                 {
                     SecurityTokenValidated = async n =>
@@ -65,7 +65,7 @@ namespace WebApplication1
                         var incomingClaims = n.AuthenticationTicket.Identity.Claims.ToList();
                         string identityProvider = incomingClaims.First(c => c.Type == JwtClaimTypes.IdentityProvider).Value;  //Facebook, Twitter, Google, idsrv
 
-                        // TODO: Get roles into newIdentity for MVC Client
+                        // TODO: can be simplified
                         try
                         {
                             // If more than one role

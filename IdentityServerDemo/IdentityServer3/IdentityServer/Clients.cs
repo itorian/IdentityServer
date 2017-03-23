@@ -28,26 +28,26 @@ namespace IdentityServer3Demo.IdentityServer
                     AccessTokenType = AccessTokenType.Jwt,
                     AllowedScopes = new List<string>
                     {
-                        "openid", "profile", "email", "roles", "apiname1"  // Knorish Website client needs knorishapi scope
+                        "openid", "profile", "email", "roles" // configured in Scopes.cs
                     }
                 },
 
-                new Client  // Windows Phone or Android or IOS client
-                {
-                    Enabled = true,
-                    ClientId = "native",
-                    ClientName = "Mobile Device",
-                    Flow = Flows.Implicit,
-                    RequireConsent = false,
-                    RedirectUris = new List<string>
-                    {
-                        ""
-                    },
-                    AllowedScopes = new List<string>
-                    {
-                        "openid", "profile", "email", "roles", "apiname1"
-                    }
-                }
+                //new Client  // Windows Phone or Android or IOS client
+                //{
+                //    Enabled = true,
+                //    ClientId = "native",
+                //    ClientName = "Mobile Device",
+                //    Flow = Flows.Implicit,
+                //    RequireConsent = false,
+                //    RedirectUris = new List<string>
+                //    {
+                //        ""
+                //    },
+                //    AllowedScopes = new List<string>
+                //    {
+                //        "openid", "profile", "email", "roles", "apiname1"
+                //    }
+                //}
 
             };
         }
