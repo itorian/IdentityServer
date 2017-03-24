@@ -1,0 +1,42 @@
+==============
+IDENTITYSERVER
+==============
+
+Step 1. New MVC Project with No Authentication
+
+Step 2. Install packages
+        IdentityServer3
+        Microsoft.Owin.Host.Systemweb
+        IdentityServer3.AspNetIdentity
+        Microsoft.AspNet.Identity.EntityFramework
+        AntiXSS
+
+Step 3. Enable HTTPS, and update web project url to https version
+
+Step 4. Update Startup.cs file
+        https://github.com/itorian/IdentityServer/blob/master/IdentityServerDemo/IdentityServer3/Startup.cs
+
+Step 5. Create a new folder IdentityServer in project and create following 7 .cs files
+        https://github.com/itorian/IdentityServer/tree/master/IdentityServerDemo/IdentityServer3/IdentityServer
+
+Step 5. Use purchased or sample SSL certificate from here
+        (paste this in IdentityServer folder and set Copy to Output Direct = Copy Always from its properties)
+        https://github.com/IdentityServer/IdentityServer3.Samples/blob/master/source/Certificates/idsrv3test.pfx
+
+Step 7. Run the application and browse to below link to check openid-specifications of your identityserver
+        https://localhost:44364/identity/.well-known/openid-configuration
+
+Step 8. Set RAMMFAR true so that it loads assets from package/library in web.config file
+        runAllManagedModulesForAllRequests="true"
+        https://github.com/itorian/IdentityServer/blob/master/IdentityServerDemo/IdentityServer3/Web.config
+
+Step 9. Upload assets, create 3 folders (app, custom, libs) in project inside 'content' folder and copy their contents
+        https://github.com/itorian/IdentityServer/tree/master/IdentityServerDemo/IdentityServer3/Content
+
+Step 10. Install Serilog and Serilog.Sinks.Trace to check logs at IdentityServer, this helps troubleshoot issues
+
+Step 11. Update web.config connection string
+         <add name="DefaultConnection" connectionString="data source=ITORIAN-YOGA;initial catalog=identityserverdemo;persist security info=True;user id=sa;password=@Abhi123_12A;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
+
+Step 12. Update client & server details in both projects
+

@@ -22,13 +22,11 @@
             </li>
         </ul>
     </div>
-
-        <div class="container">
-            <div class="page-header">
-                <h1>This is a custom view</h1>
-            </div>
+    <div class="container">
+        <div class="page-header">
+            <h1>This is a custom view</h1>
         </div>
-
+    </div>
     <div class='container page-consent' ng-cloak>
         <div class="row page-header">
             <div class="col-sm-10">
@@ -39,7 +37,6 @@
                 </h1>
             </div>
         </div>
-
         <div class="row">
             <div class="col-sm-8">
                 <div ng-show="model.errorMessage" class="alert alert-danger">
@@ -48,9 +45,7 @@
                 </div>
                 <form name="form" method="post" action="{{model.consentUrl}}" class="consent-form">
                     <anti-forgery-token token="model.antiForgery"></anti-forgery-token>
-
                     <div>Uncheck the permissions you do not wish to grant.</div>
-
                     <div class="panel panel-default consent-buttons" ng-show="model.identityScopes">
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-user"></span>
@@ -70,7 +65,6 @@
                             </li>
                         </ul>
                     </div>
-
                     <div class="panel panel-default" ng-show="model.resourceScopes">
                         <div class="panel-heading">
                             <span class="glyphicon glyphicon-tasks"></span>
@@ -91,14 +85,12 @@
                             </li>
                         </ul>
                     </div>
-
                     <div class="consent-remember" ng-show="model.allowRememberConsent">
                         <label>
                             <input class="consent-scopecheck" type="checkbox" name="RememberConsent" value="true" ng-model="model.rememberConsent" />
                             <strong>Remember My Decision</strong>
                         </label>
                     </div>
-
                     <div class="consent-buttons">
                         <button name="button" value="yes" class="btn btn-primary" autofocus>Yes, Allow</button>
                         <button name="button" value="no" class="btn">No, Do Not Allow</button>
@@ -111,14 +103,13 @@
             </div>
         </div>
     </div>
-
-        <script id='modelJson' type='application/json'>
-            {model}
-        </script>
-        <script src="/content/libs/jquery/jquery-1.11.0.min.js"></script>
-        <script src="/content/libs/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/content/libs/angular/angular.1.2.13.min.js"></script>
-        <script src="/content/libs/encoder/encoder.min.js"></script>
-        <script src="/content/app/app.js"></script>
+    <script id='modelJson' type='application/json'>
+        {model}
+    </script>
+    <script src="/content/libs/jquery/jquery-1.11.0.min.js"></script>
+    <script src="/content/libs/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/content/libs/angular/angular.1.2.13.min.js"></script>
+    <script src="/content/libs/encoder/encoder.min.js"></script>
+    <script src="/content/app/app.js"></script>
 </body>
 </html>

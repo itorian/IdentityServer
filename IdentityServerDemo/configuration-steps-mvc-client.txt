@@ -1,0 +1,30 @@
+====================
+ASP.NET / MVC CLIENT
+====================
+
+Goal: We have a up and running ASP.NET or MVC website with ASP.NET Identity database, let's learn migrating them to use IdentityServer.
+
+Step 1. New MVC Project with Individual User Account
+
+Step 2. Install packages
+        Install-Package Thinktecture.IdentityModel.Client
+        Install-Package System.IdentityModel.Tokens.Jwt -Version 4.0.2.206221351 (only this version)
+        Install-Package Microsoft.Owin.Security.OpenIdConnect
+
+Step 3. Update Startup.cs file
+        https://github.com/itorian/IdentityServer/blob/master/IdentityServerDemo/WebApplication1/Startup.cs
+
+Step 4. Create a folder Helper > EndpointAndTokenHelper.cs with following code
+        https://github.com/itorian/IdentityServer/blob/master/IdentityServerDemo/WebApplication1/Helper/EndpointAndTokenHelper.cs
+
+Step 5. Update _LoginPartial.cshtml
+        https://github.com/itorian/IdentityServer/blob/master/IdentityServerDemo/WebApplication1/Views/Shared/_LoginPartial.cshtml
+
+Step 6. Update AccountController.cs > Login() and Logout() methods
+        https://github.com/itorian/IdentityServer/blob/master/IdentityServerDemo/WebApplication1/Controllers/AccountController.cs
+
+Step 7. Update web.config connection string 
+        <add name="DefaultConnection" connectionString="data source=ITORIAN-YOGA;initial catalog=identityserverdemo;persist security info=True;user id=sa;password=@Abhi123_12A;MultipleActiveResultSets=True;App=EntityFramework" providerName="System.Data.SqlClient" />
+
+Step 7. Update client & server details in both projects
+

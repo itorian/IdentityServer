@@ -1,10 +1,13 @@
 ﻿using IdentityServer3.Core.Configuration;
 using IdentityServer3.Core.Logging;
 using IdentityServer3.Core.Models;
+using IdentityServer3.Core.Services;
+using IdentityServer3.Core.Services.Default;
 using IdentityServer3Demo.IdentityServer;
 using Owin;
 using Serilog;
 using System;
+using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 
 namespace IdentityServer3Demo
@@ -38,16 +41,16 @@ namespace IdentityServer3Demo
 
             app.Map("/identity", core =>
             {
-                //// Configure clients, scopes and users services - asp.net identity database
+                // Configure clients, scopes and users services - asp.net identity database
                 var idSvrFactory = Factory.Configure();
                 idSvrFactory.ConfigureUserService("DefaultConnection");
 
-                //// Custom View Service - include content/app+custom+libs folders
-                //idSvrFactory.ViewService = new Registration<IViewService>(typeof(CustomViewService));
-                //idSvrFactory.CorsPolicyService = new Registration<ICorsPolicyService>(new DefaultCorsPolicyService { AllowAll = true });
-                //List<LoginPageLink> loginPageLinks = new List<LoginPageLink>();
-                //loginPageLinks.Add( new LoginPageLink { Href = "", Text = "Forgot Password ?", Type = "" });
-                //loginPageLinks.Add(new LoginPageLink { Href = "", Text = "Not Registered ?", Type = "" });
+                // Custom View Service - include content/app+custom+libs folders
+                idSvrFactory.ViewService = new Registration<IViewService>(typeof(CustomViewService));
+                idSvrFactory.CorsPolicyService = new Registration<ICorsPolicyService>(new DefaultCorsPolicyService { AllowAll = true });
+                List<LoginPageLink> loginPageLinks = new List<LoginPageLink>();
+                loginPageLinks.Add(new LoginPageLink { Href = "", Text = "Forgot Password ?", Type = "" });
+                loginPageLinks.Add(new LoginPageLink { Href = "", Text = "Not Registered ?", Type = "" });
 
                 var options = new IdentityServerOptions
                 {
@@ -134,7 +137,7 @@ namespace IdentityServer3Demo
             //});
         }
 
-        // Load your purchased SSL Certificate, paste that certificate in bin as well as Certificates folder
+        // Load your purchased SSL Certificate, or use free from here https://github.com/IdentityServer/IdentityServer3.Samples/tree/master/source/Certificates
         X509Certificate2 LoadCertificate()
         {
             return new X509Certificate2(string.Format(@"{0}\bin\identityserver\idsrv3test.pfx", AppDomain.CurrentDomain.BaseDirectory), "idsrv3test");

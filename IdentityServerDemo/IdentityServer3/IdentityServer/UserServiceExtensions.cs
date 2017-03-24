@@ -4,8 +4,6 @@ using IdentityServer3.Core.Services;
 
 namespace IdentityServer3Demo.IdentityServer
 {
-    // install-package IdentityServer3Demo.AspNetIdentity
-
     public static class UserServiceExtensions
     {
         public static void ConfigureUserService(this IdentityServerServiceFactory factory, string connString)

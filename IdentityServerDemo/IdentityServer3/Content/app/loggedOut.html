@@ -7,7 +7,6 @@
     <link href="/content/app/app.css" rel="stylesheet">
 </head>
 <body lang="en">
-
     <div class='container page-loggedOut' ng-cloak>
         <div class="page-header">
             <h1>You are now logged out</h1>
@@ -18,12 +17,11 @@
             <iframe class="signout" ng-repeat="url in model.iFrameUrls" ng-src="{{url}}"></iframe>
         </div>
         <p>
-            <a href="https://www.knorish.com/">Continue to main site</a> |
-            <a href="https://blog.knorish.com/">Continue to blog site</a> |
-            <a href="http://feedback.knorish.com">Continue to feedback site</a>
+            <a href="#">Continue to main site</a> |
+            <a href="#">Continue to blog site</a> |
+            <a href="#">Continue to feedback site</a>
         </p>
     </div>
-
     <script id='modelJson' type='application/json'>
         {model}
     </script>
@@ -34,4 +32,3 @@
     <script src="/content/app/app.js"></script>
 </body>
 </html>
-

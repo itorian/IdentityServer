@@ -15,11 +15,6 @@ using Thinktecture.IdentityModel.Client;
 using WebApplication1.Helper;
 using WebApplication1.Models;
 
-//Steps:-
-//1. Create MVC project with Individual Authentication to get all the necessary packages
-//2. Install-Packages Thinktecture.IdentityModel.Client
-//3. 
-
 [assembly: OwinStartupAttribute(typeof(WebApplication1.Startup))]
 namespace WebApplication1
 {
